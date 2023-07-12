@@ -1,0 +1,12 @@
+extends default
+
+block content
+  div.container
+    h1.text-center.mt-5 Generated Article Titles
+    ul.list-group.mt-5
+      each title in generatedTitles
+        li.list-group-item
+          img(src=`data:image/png;base64,${title.thumbnail}`)
+          form(action='/generate-article', method='POST')
+            input(type='hidden', name='articleTitle', value=title._id)
+            button.btn.btn-link.title(data-id=`${title._id}`)= title.title

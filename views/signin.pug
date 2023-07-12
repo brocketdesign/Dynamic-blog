@@ -1,0 +1,19 @@
+extends default
+block content
+  div.container
+    div.row
+      div.col-md-6.offset-md-3
+        h1.mb-4text-center  ようこそ！
+        if error
+          .alert.alert-danger.rounded.m-3(role='alert') ユーザーネームかパスワードが間違っています。
+        form.rounded(method='POST', action=`${action}`)
+          div.form-group
+            label(for='username') ユーザーネーム:
+            input.form-control(type='text', id='username', name='username')
+          div.form-group
+            label(for='password') パスワード:
+            input.form-control(type='password', id='password', name='password')
+          button.btn.btn-primary.my-3(type='submit') #{title}
+          if signin 
+            .row
+              a(href="/signin") まだアカウントを持ってない方はこちら

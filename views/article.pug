@@ -1,0 +1,10 @@
+extends default
+
+block content
+  div.container
+    h1.text-center.mt-5 Generated Article
+    div.markdown-content.mt-5
+      pre= generatedArticle
+    .d-flex.justify-content-between
+      a.btn.btn-primary.mt-5(href='/') Back to Articles
+      span.btn.btn-primary.mt-5(onclick="PostArticle()" data-id=`${articleId}`) Post the Article

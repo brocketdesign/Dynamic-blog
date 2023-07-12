@@ -1,0 +1,26 @@
+extends default
+
+block content
+  div.container
+    h1.text-center.mt-5 Dynamic Blog
+    form#generate-titles-form(action='/generate-titles', method='POST', class='mt-5')
+      .input-group
+        input.form-control#subject( type='text', name='subject', placeholder='Enter a subject for the article title', required)
+        button.btn.btn-primary(type='submit') Generate Titles
+    h3.mt-5 Subjects
+    ul.list-group.mt-3
+      each subject in subjects
+        li.list-group-item 
+          a(href=`titles/${subject}`)= subject
+    h3.mt-5 Available Articles
+    ul.list-group.mt-3
+      each article in articles
+        if article.content
+          li.list-group-item
+            button.btn.btn-link.title(data-id=`${article._id}`)= article.title
+    h3.mt-5 Articles to Generate
+    ul.list-group.mt-3
+      each article in articles
+        if !article.content
+          li.list-group-item
+            button.btn.btn-link.title(data-id=`${article._id}`)= article.title
